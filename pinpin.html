@@ -26,5 +26,41 @@
         window.app = new PinpinDetailApp();
         window.app.init();
     </script>
+
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var video = document.getElementById('pinpinPromoVideo');
+                var overlay = document.getElementById('pinpinVideoOverlay');
+                if (video && overlay) {
+                    video.muted = true;
+                    video.src = 'assets/pinpin-promo.mp4';
+                    video.load();
+
+                    var togglePlay = function() {
+                        if (video.paused) {
+                            video.play().then(function() {
+                                overlay.classList.add('hidden');
+                            }).catch(function() {
+                                video.muted = true;
+                                video.play().then(function() {
+                                    overlay.classList.add('hidden');
+                                }).catch(function() {});
+                            });
+                        } else {
+                            video.pause();
+                            overlay.classList.remove('hidden');
+                        }
+                    };
+
+                    overlay.addEventListener('click', togglePlay);
+                    video.addEventListener('click', togglePlay);
+                    video.addEventListener('ended', function() {
+                        overlay.classList.remove('hidden');
+                    });
+                }
+            }, 500);
+        });
+    </script>
 </body>
 </html>
