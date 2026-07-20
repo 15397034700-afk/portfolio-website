@@ -23,6 +23,31 @@ export class DetailInteractions {
         this.initProjectProgress();
         this.initNextProject();
         this.initSequentialImages();
+        this.initDownloadResume();
+    }
+
+    initDownloadResume() {
+        const downloadBtns = document.querySelectorAll('[data-action="download-resume"]');
+        downloadBtns.forEach((btn) => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (btn.classList.contains('downloading')) return;
+                btn.classList.add('downloading');
+
+                setTimeout(() => {
+                    const link = document.createElement('a');
+                    link.href = 'resume.pdf';
+                    link.download = 'Chen-Ming-Resume.pdf';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+
+                    setTimeout(() => {
+                        btn.classList.remove('downloading');
+                    }, 400);
+                }, 500);
+            });
+        });
     }
 
     // ============ Project Progress ============
