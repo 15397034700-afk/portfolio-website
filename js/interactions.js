@@ -24,9 +24,9 @@ export class Interactions {
     // 进入视口时 Fade Up，只播放一次
     initSectionReveal() {
         const targets = document.querySelectorAll(
-            '.section, .pinpin-hero-section, .pinpin-thinking-section, .pinpin-preview-section, ' +
+            '.section, .cg-section, .cp-section, ' +
+            '.pinpin-hero-section, .pinpin-thinking-section, .pinpin-preview-section, ' +
             '.research-hero-section, .research-insights-section, .voice-archive-section, .research-dataset-section, ' +
-            '.concert-hero-section, .content-growth-hero, .design-collection-hero, ' +
             '.work-card-item, .thinking-module, .feature-item, .preview-gallery-item, ' +
             '.reflection-section, .next-project-section'
         );

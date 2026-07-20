@@ -507,6 +507,13 @@ body.page-entering {
     transition: gap 0.4s ease-out;
 }
 
+.next-project-link {
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 20px 0;
+}
+
 .next-project-link:hover .next-project-title {
     color: var(--color-text-ink-green, #5A6B5D);
 }
