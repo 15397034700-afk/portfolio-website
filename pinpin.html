@@ -29,37 +29,26 @@
 
     <script>
         window.addEventListener('load', function() {
-            setTimeout(function() {
-                var video = document.getElementById('pinpinPromoVideo');
-                var overlay = document.getElementById('pinpinVideoOverlay');
-                if (video && overlay) {
-                    video.muted = true;
-                    video.src = 'assets/pinpin-promo.mp4';
-                    video.load();
+            var video = document.getElementById('pinpinPromoVideo');
+            var overlay = document.getElementById('pinpinVideoOverlay');
+            if (!video || !overlay) return;
 
-                    var togglePlay = function() {
-                        if (video.paused) {
-                            video.play().then(function() {
-                                overlay.classList.add('hidden');
-                            }).catch(function() {
-                                video.muted = true;
-                                video.play().then(function() {
-                                    overlay.classList.add('hidden');
-                                }).catch(function() {});
-                            });
-                        } else {
-                            video.pause();
-                            overlay.classList.remove('hidden');
-                        }
-                    };
-
-                    overlay.addEventListener('click', togglePlay);
-                    video.addEventListener('click', togglePlay);
-                    video.addEventListener('ended', function() {
-                        overlay.classList.remove('hidden');
+            function togglePlay(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                if (video.paused) {
+                    video.play().then(function() {
+                        overlay.style.display = 'none';
+                    }).catch(function(err) {
+                        console.log('Play failed:', err);
                     });
+                } else {
+                    video.pause();
+                    overlay.style.display = 'flex';
                 }
-            }, 500);
+            }
+
+            overlay.addEventListener('click', togglePlay);
         });
     </script>
 </body>
