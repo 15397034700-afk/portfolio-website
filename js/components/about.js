@@ -32,12 +32,14 @@ export class About {
                         <div class="about-header">
                             <p class="about-label">About Me</p>
                             <h2 class="about-title">关于我</h2>
-                            <p class="about-subtitle">关注 AI 产品与用户体验的设计者。</p>
-                            <p class="about-subtitle">横跨环境设计、媒体研究与数字产品探索。</p>
                         </div>
 
                         <div class="about-content">
-                            <p>我习惯从用户需求出发，通过研究、设计和技术实现，将抽象想法转化为真实可用的产品体验。</p>
+                            <p>陈铭，来自浙江丽水。</p>
+                            <p>本科-浙江大学城市学院（环境设计专业）</p>
+                            <p>硕士-马来西亚理工大学（传播与数字文化专业）</p>
+                            <p>设计与研究让我始终关注人与产品之间的关系，也让我逐渐将兴趣延伸到 AI 产品、用户体验与数字内容领域。</p>
+                            <p>希望通过研究、设计与技术，构建更自然、更有温度的产品体验。</p>
                         </div>
                     </div>
                 </div>

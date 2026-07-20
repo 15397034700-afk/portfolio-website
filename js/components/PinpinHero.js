@@ -78,15 +78,11 @@ export class PinpinHero {
         const iconMuted = muteBtn ? muteBtn.querySelector('.icon-muted') : null;
         if (!video || !overlay || !wrapper) return;
 
+        video.muted = true;
+
         video.addEventListener('loadedmetadata', () => {
             const ratio = video.videoWidth / video.videoHeight;
             wrapper.style.aspectRatio = ratio ? ratio.toString() : '4 / 5';
-        });
-
-        video.addEventListener('canplay', () => {
-            video.play().then(() => {
-                overlay.classList.add('hidden');
-            }).catch(() => {});
         });
 
         const updateMuteIcon = () => {
@@ -102,8 +98,14 @@ export class PinpinHero {
 
         const togglePlay = () => {
             if (video.paused) {
-                video.play();
-                overlay.classList.add('hidden');
+                video.play().then(() => {
+                    overlay.classList.add('hidden');
+                }).catch(() => {
+                    video.muted = true;
+                    video.play().then(() => {
+                        overlay.classList.add('hidden');
+                    }).catch(() => {});
+                });
             } else {
                 video.pause();
                 overlay.classList.remove('hidden');
@@ -116,20 +118,15 @@ export class PinpinHero {
             updateMuteIcon();
         };
 
-        // 点击遮罩层 → 开始播放
         overlay.addEventListener('click', togglePlay);
-        // 点击视频本身 → 暂停/继续
         video.addEventListener('click', togglePlay);
-        // 静音按钮 → 切换静音
         if (muteBtn) {
             muteBtn.addEventListener('click', toggleMute);
         }
-        // 播放结束显示遮罩（非 loop 场景兜底）
         video.addEventListener('ended', () => {
             overlay.classList.remove('hidden');
         });
 
-        // 初始化静音图标状态
         updateMuteIcon();
     }
 }
