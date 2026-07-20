@@ -6,10 +6,11 @@
     <title>Content Growth — Chen Ming Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/content-growth.css">
+    <link rel="stylesheet" href="css/interactions.css">
 </head>
 <body class="cg-page">
 
-    <a href="index.html" class="cg-back">← Back Home</a>
+    <a href="index.html#works" class="cg-back">← Back Home</a>
 
     <main>
         <!-- PAGE 01 -->
@@ -206,18 +207,23 @@
         </section>
     </main>
 
-    <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.classList.add('cg-visible');
-                    }, index * 80);
-                }
-            });
-        }, { threshold: 0.15 });
+    <script type="module">
+        import { DetailInteractions } from './js/detail-interactions.js';
 
-        document.querySelectorAll('.cg-section').forEach(el => observer.observe(el));
+        const sections = Array.from(document.querySelectorAll('.cg-section')).slice(0, 6).map((s, i) => {
+            const labels = ['Overview', 'Approach', 'Decisions', 'Process', 'Results', 'Reflection'];
+            return { id: s.id, label: labels[i] || `Section ${i + 1}` };
+        }).filter(s => s.id);
+
+        const detail = new DetailInteractions({
+            sections,
+            nextProject: {
+                title: 'Digital Culture Research',
+                subtitle: 'User Research',
+                url: 'research.html'
+            }
+        });
+        detail.init();
     </script>
 </body>
 </html>

@@ -6,10 +6,11 @@
     <title>Visual Archive - Chen Ming Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/design-collection.css">
+    <link rel="stylesheet" href="css/interactions.css">
 </head>
 <body class="dc-page">
 
-    <a href="index.html" class="dc-back">← Back</a>
+    <a href="index.html#works" class="dc-back">← Back</a>
 
     <!-- 1. Hero -->
     <section class="dc-hero" id="dc-hero">
@@ -220,5 +221,13 @@
     </div>
 
     <script type="module" src="js/app-design-collection.js"></script>
+    <script type="module">
+        import { Interactions } from './js/interactions.js';
+        // 在原有 app 初始化后加入通用交互
+        setTimeout(() => {
+            const interactions = new Interactions();
+            interactions.init();
+        }, 200);
+    </script>
 </body>
 </html>

@@ -4,15 +4,28 @@ import { PageDecorations } from './components/PageDecorations.js';
 import { PinpinHero } from './components/PinpinHero.js';
 import { PinpinThinking } from './components/PinpinThinking.js';
 import { PinpinPreview } from './components/PinpinPreview.js';
+import { DetailInteractions } from './detail-interactions.js';
 
 export class PinpinDetailApp {
     constructor() {
         this.components = {};
+        this.detailInteractions = new DetailInteractions({
+            sections: [
+                { id: 'pinpin-hero', label: 'Overview' },
+                { id: 'pinpin-thinking', label: 'Thinking' },
+                { id: 'pinpin-preview', label: 'Preview' }
+            ],
+            nextProject: {
+                title: 'Content Growth',
+                subtitle: 'Content Strategy',
+                url: 'content-growth.html'
+            }
+        });
     }
 
     init() {
         this.renderComponents();
-        this.initScrollEffects();
+        this.detailInteractions.init();
     }
 
     renderComponents() {
@@ -40,31 +53,5 @@ export class PinpinDetailApp {
         return `
             ${dec.renderCornerFlower('top-left')}
         `;
-    }
-
-    initScrollEffects() {
-        const sections = document.querySelectorAll('.section');
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('in-view');
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -30px 0px'
-        });
-
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-
-        sections.forEach(section => {
-            const rect = section.getBoundingClientRect();
-            if (rect.top < window.innerHeight && rect.bottom > 0) {
-                section.classList.add('in-view');
-            }
-        });
     }
 }

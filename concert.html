@@ -6,10 +6,11 @@
     <title>Concert Project — Chen Ming Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&family=PingFang+SC:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/concert-detail.css">
+    <link rel="stylesheet" href="css/interactions.css">
 </head>
 <body class="concert-page">
 
-    <a href="index.html" class="cp-back">← Back Home</a>
+    <a href="index.html#works" class="cp-back">← Back Home</a>
 
     <main>
         <!-- PAGE 01 -->
@@ -182,16 +183,24 @@
         </section>
     </main>
 
-    <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-in-view');
-                }
-            });
-        }, { threshold: 0.1 });
+    <script type="module">
+        import { DetailInteractions } from './js/detail-interactions.js';
 
-        document.querySelectorAll('.cp-section').forEach(el => observer.observe(el));
+        // 找到所有 section 作为 progress 节点
+        const sections = Array.from(document.querySelectorAll('.cp-section')).slice(0, 6).map((s, i) => {
+            const labels = ['Overview', 'Planning', 'Execution', 'Partners', 'Live', 'Reflection'];
+            return { id: s.id, label: labels[i] || `Section ${i + 1}` };
+        }).filter(s => s.id);
+
+        const detail = new DetailInteractions({
+            sections,
+            nextProject: {
+                title: 'Design Collection',
+                subtitle: 'Visual Design',
+                url: 'design-collection.html'
+            }
+        });
+        detail.init();
     </script>
 </body>
 </html>

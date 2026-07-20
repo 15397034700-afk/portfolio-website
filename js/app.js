@@ -6,17 +6,22 @@ import { Resume } from './components/Resume.js';
 import { Navigation } from './components/navigation.js';
 import { Footer } from './components/footer.js';
 import { PageDecorations } from './components/PageDecorations.js';
+import { Interactions, showToast } from './interactions.js';
 
 export class App {
     constructor() {
         this.components = {};
         this.worksData = worksData;
+        this.interactions = new Interactions();
     }
 
     init() {
         this.renderComponents();
         this.handleAnchorScroll();
         this.initScrollEffects();
+        this.initHeroSequence();
+        this.initResumeInteractions();
+        this.interactions.init();
     }
 
     handleAnchorScroll() {
@@ -185,5 +190,92 @@ export class App {
                 }
             });
         });
+    }
+
+    // Hero → About → Projects → Resume 依次淡入
+    initHeroSequence() {
+        const sections = [
+            '#hero .hero-section',
+            '#about .about-section',
+            '#works .works-section',
+            '#resume .resume-section'
+        ];
+
+        sections.forEach((sel, i) => {
+            const el = document.querySelector(sel);
+            if (!el) return;
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+            el.style.transitionDelay = `${0.15 * i + 0.1}s`;
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    }
+
+    // Resume 交互：Download 显示 downloading、Send Email 复制邮箱
+    initResumeInteractions() {
+        const downloadBtn = document.querySelector('[data-action="download-resume"]');
+        if (downloadBtn) {
+            // 移除之前绑定的 handler，重新绑定
+            const newBtn = downloadBtn.cloneNode(true);
+            downloadBtn.parentNode.replaceChild(newBtn, downloadBtn);
+
+            newBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (newBtn.classList.contains('downloading')) return;
+                newBtn.classList.add('downloading');
+
+                setTimeout(() => {
+                    const link = document.createElement('a');
+                    link.href = 'portfolio-fullpage.pdf';
+                    link.download = 'Chen-Ming-Resume.pdf';
+                    link.click();
+
+                    setTimeout(() => {
+                        newBtn.classList.remove('downloading');
+                    }, 400);
+                }, 800);
+            });
+        }
+
+        // Send Email → 复制邮箱
+        const emailLink = document.querySelector('[data-link="email"]');
+        if (emailLink) {
+            emailLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                const email = '15397034700@163.com';
+
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(email).then(() => {
+                        showToast('Email copied');
+                    }).catch(() => {
+                        this.fallbackCopy(email);
+                    });
+                } else {
+                    this.fallbackCopy(email);
+                }
+            });
+        }
+    }
+
+    fallbackCopy(text) {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+            document.execCommand('copy');
+            showToast('Email copied');
+        } catch (err) {
+            showToast('Copy failed');
+        }
+        document.body.removeChild(textarea);
     }
 }

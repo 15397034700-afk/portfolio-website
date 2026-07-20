@@ -5,15 +5,29 @@ import { VoiceArchive } from './components/VoiceArchive.js';
 import { ResearchInsights } from './components/ResearchInsights.js';
 import { Footer } from './components/footer.js';
 import { PageDecorations } from './components/PageDecorations.js';
+import { DetailInteractions } from './detail-interactions.js';
 
 export class ResearchDetailApp {
     constructor() {
         this.components = {};
+        this.detailInteractions = new DetailInteractions({
+            sections: [
+                { id: 'research-hero', label: 'Overview' },
+                { id: 'research-dataset', label: 'Dataset' },
+                { id: 'voice-archive', label: 'Voice Archive' },
+                { id: 'research-insights', label: 'Insights' }
+            ],
+            nextProject: {
+                title: 'Concert Project',
+                subtitle: 'Project Coordination',
+                url: 'concert.html'
+            }
+        });
     }
 
     init() {
         this.renderComponents();
-        this.initScrollEffects();
+        this.detailInteractions.init();
         this.initVoiceArchive();
     }
 
@@ -51,31 +65,5 @@ export class ResearchDetailApp {
         return `
             ${dec.renderCornerFlower('top-left')}
         `;
-    }
-
-    initScrollEffects() {
-        const sections = document.querySelectorAll('.section');
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('in-view');
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -30px 0px'
-        });
-
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-
-        sections.forEach(section => {
-            const rect = section.getBoundingClientRect();
-            if (rect.top < window.innerHeight && rect.bottom > 0) {
-                section.classList.add('in-view');
-            }
-        });
     }
 }
