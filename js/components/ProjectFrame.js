@@ -1,6 +1,7 @@
 export class ProjectFrame {
     constructor({
         image = '',
+        video = '',
         alt = '',
         className = '',
         width = 700,
@@ -24,6 +25,7 @@ export class ProjectFrame {
         }
     } = {}) {
         this.image = image;
+        this.video = video;
         this.alt = alt;
         this.className = className;
         this.width = width;
@@ -59,10 +61,24 @@ export class ProjectFrame {
         return `
             <div class="project-frame ${this.className}" data-project-frame>
                 <div class="project-frame-image-layer">
-                    ${this.image ? `<img src="${this.image}" alt="${this.alt}" class="project-frame-image" />` : ''}
+                    ${this.video ? this.renderVideo() : ''}
+                    ${this.image && !this.video ? `<img src="${this.image}" alt="${this.alt}" class="project-frame-image" />` : ''}
                 </div>
                 <div class="project-frame-border-layer">
                     ${this.renderSVG()}
+                </div>
+            </div>
+        `;
+    }
+
+    renderVideo() {
+        return `
+            <div class="project-video-container">
+                <video class="project-frame-video" autoplay loop muted playsinline>
+                    <source src="${this.video}" type="video/mp4">
+                </video>
+                <div class="project-video-overlay">
+                    <div class="video-play-icon">▶</div>
                 </div>
             </div>
         `;

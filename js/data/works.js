@@ -10,6 +10,7 @@ export const worksData = [
         keywords: ['AI Product', 'Product Design', 'AI Interaction'],
         detailUrl: 'pinpin.html',
         image: 'assets/pinpin-home.png',
+        video: 'assets/pinpin-promo.mp4',
         side: 'right',
         tree: {
             branchIndex: 0,

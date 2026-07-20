@@ -6,6 +6,7 @@ export class WorkCard {
         this.index = index;
         this.frame = new ProjectFrame({
             image: project.image,
+            video: project.video,
             alt: project.title
         });
     }
