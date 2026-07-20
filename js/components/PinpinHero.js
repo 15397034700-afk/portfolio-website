@@ -38,10 +38,9 @@ export class PinpinHero {
                         
                         <div class="pinpin-hero-right">
                             <div class="pinpin-video-wrapper" id="pinpinVideoWrapper">
-                                <video class="pinpin-promo-video" id="pinpinPromoVideo" loop playsinline preload="metadata" poster="">
-                                    <source src="assets/pinpin-promo.mp4" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
+                            <video class="pinpin-promo-video" id="pinpinPromoVideo" src="assets/pinpin-promo.mp4" loop playsinline preload="auto" muted poster="">
+                                Your browser does not support the video tag.
+                            </video>
                                 <div class="pinpin-video-overlay" id="pinpinVideoOverlay">
                                     <div class="video-play-button">
                                         <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -79,10 +78,15 @@ export class PinpinHero {
         const iconMuted = muteBtn ? muteBtn.querySelector('.icon-muted') : null;
         if (!video || !overlay || !wrapper) return;
 
-        // 根据视频原始尺寸调整 wrapper 长宽比
         video.addEventListener('loadedmetadata', () => {
             const ratio = video.videoWidth / video.videoHeight;
             wrapper.style.aspectRatio = ratio ? ratio.toString() : '4 / 5';
+        });
+
+        video.addEventListener('canplay', () => {
+            video.play().then(() => {
+                overlay.classList.add('hidden');
+            }).catch(() => {});
         });
 
         const updateMuteIcon = () => {
