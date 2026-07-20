@@ -581,3 +581,237 @@ main {
     .cp-final-en { font-size: 16px; }
     .cp-final-zh { font-size: 15px; }
 }
+
+@media (max-width: 768px) {
+    main {
+        padding: 0 20px;
+    }
+
+    .cp-back {
+        left: 20px;
+        top: 20px;
+        font-size: 12px;
+    }
+
+    .cp-container {
+        padding: 64px 0;
+    }
+
+    #cp-01 .cp-container {
+        padding-top: 100px;
+        padding-bottom: 64px;
+    }
+
+    #cp-02 .cp-container,
+    #cp-03 .cp-container {
+        padding-top: 64px;
+        padding-bottom: 80px;
+    }
+
+    .cp-overview {
+        max-width: 100%;
+        margin: 0 auto 48px;
+        text-align: center;
+    }
+
+    .cp-h1 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    .cp-h2 {
+        font-size: 22px;
+        margin-bottom: 8px;
+    }
+
+    .cp-subtitle,
+    .cp-section-subtitle {
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+
+    .cp-section-header {
+        margin-bottom: 32px;
+    }
+
+    .cp-body {
+        font-size: 14px;
+        line-height: 1.8;
+        gap: 8px;
+    }
+
+    .cp-hero {
+        max-width: 400px;
+        margin: 0 auto 48px;
+    }
+
+    .cp-image {
+        border-radius: 16px;
+    }
+
+    .cp-hero .cp-image {
+        aspect-ratio: 4 / 3;
+    }
+
+    .cp-hero .cp-image-placeholder {
+        aspect-ratio: 4 / 3;
+        border-radius: 16px;
+    }
+
+    .cp-snapshot {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        max-width: 100%;
+        padding: 32px 0;
+    }
+
+    .cp-snapshot-num {
+        font-size: 32px;
+    }
+
+    .cp-snapshot-unit {
+        font-size: 10px;
+        margin-top: 8px;
+    }
+
+    .cp-journey {
+        gap: 48px;
+    }
+
+    .cp-journey-item {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .cp-journey-reverse .cp-journey-content {
+        order: 1;
+    }
+
+    .cp-journey-reverse .cp-journey-image {
+        order: 2;
+    }
+
+    .cp-journey-content {
+        gap: 12px;
+    }
+
+    .cp-journey-num {
+        font-size: 16px;
+    }
+
+    .cp-journey-title {
+        font-size: 20px;
+    }
+
+    .cp-journey-body {
+        font-size: 14px;
+        line-height: 1.8;
+        gap: 8px;
+        margin-top: 4px;
+    }
+
+    .cp-journey-image {
+        max-width: 400px;
+        margin: 0 auto;
+        width: 90%;
+    }
+
+    .cp-journey-image .cp-image {
+        border-radius: 16px;
+    }
+
+    .cp-journey-image .cp-image-placeholder {
+        border-radius: 16px;
+    }
+
+    .cp-journey-video {
+        max-width: 400px;
+        margin: 0 auto;
+        width: 90%;
+        border-radius: 16px;
+    }
+
+    .cp-video {
+        border-radius: 16px;
+    }
+
+    .cp-video-play {
+        width: 56px;
+        height: 56px;
+    }
+
+    .cp-video-play svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .cp-gallery {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        max-width: 400px;
+        margin: 0 auto 48px;
+    }
+
+    .cp-gallery-item {
+        gap: 8px;
+    }
+
+    .cp-gallery-item .cp-image {
+        border-radius: 16px;
+    }
+
+    .cp-gallery-item .cp-image-placeholder {
+        border-radius: 16px;
+    }
+
+    .cp-gallery-caption {
+        font-size: 11px;
+    }
+
+    .cp-deliverables {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        max-width: 100%;
+        padding: 32px 0;
+        margin: 0 auto 48px;
+    }
+
+    .cp-deliverable-col {
+        gap: 12px;
+    }
+
+    .cp-deliverable-label {
+        font-size: 11px;
+    }
+
+    .cp-deliverable-list {
+        gap: 8px;
+    }
+
+    .cp-deliverable-list li {
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    .cp-deliverable-list li::before {
+        top: 10px;
+    }
+
+    .cp-final-line {
+        max-width: 100%;
+    }
+
+    .cp-final-en {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+
+    .cp-final-zh {
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+    #cp-03 .cp-container {
+        padding-bottom: 80px;
+    }
+}

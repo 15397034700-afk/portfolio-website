@@ -2680,3 +2680,145 @@ main {
         transform: translateY(0);
     }
 }
+
+@media (max-width: 768px) {
+    body .hero-section {
+        padding: 100px 24px 60px;
+        min-height: auto;
+        margin-left: 0;
+    }
+
+    body .hero-main {
+        padding-left: 0;
+    }
+
+    body .hero-name {
+        font-size: 32px;
+    }
+
+    body .hero-title {
+        font-size: 30px;
+    }
+
+    body .hero-description {
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    body .hero-scroll-hint {
+        display: none !important;
+    }
+
+    body .about-section {
+        padding: 60px 24px;
+        margin-left: 0;
+    }
+
+    body .about-row {
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    body .about-photo-block {
+        max-width: 200px;
+        margin: 0 auto;
+    }
+
+    body .about-story-block {
+        text-align: left;
+    }
+
+    body .about-title {
+        font-size: 28px;
+    }
+
+    body .about-content p {
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    body .about-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: flex-start;
+    }
+
+    body .about-tag {
+        height: 36px;
+        padding: 0 16px;
+        display: inline-flex;
+        align-items: center;
+        border-radius: 18px;
+        border: 1px solid rgba(221, 184, 194, 0.3);
+        background: rgba(255, 253, 252, 0.6);
+        font-size: 13px;
+        color: #5A6B5D;
+        transform: none !important;
+    }
+
+    body .work-cards-wrapper {
+        margin-left: 0;
+        max-width: 100%;
+        padding: 0;
+    }
+
+    body .work-card-item {
+        flex-direction: column !important;
+        gap: 16px;
+        margin-bottom: 48px;
+        min-height: auto;
+        padding: 0;
+        cursor: pointer;
+    }
+
+    body .work-card-image-wrapper {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    body .polaroid-frame {
+        padding: 6px;
+    }
+
+    body .work-card-text {
+        max-width: 100%;
+        text-align: left !important;
+    }
+
+    body .work-card-number {
+        font-size: 12px;
+    }
+
+    body .work-card-title {
+        font-size: 22px;
+    }
+
+    body .work-card-description p {
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    body .resume-section {
+        padding: 60px 24px 120px;
+        margin-left: 0;
+    }
+
+    body .mobile-contact-bar {
+        backdrop-filter: blur(20px);
+        height: 72px;
+        background: rgba(255, 253, 252, 0.85);
+    }
+
+    body .sidebar-nav {
+        display: none !important;
+    }
+
+    body .works-vine-container {
+        display: none !important;
+    }
+
+    body .section {
+        padding: 60px 24px;
+    }
+}

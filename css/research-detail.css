@@ -1491,3 +1491,302 @@
         padding: 0 16px;
     }
 }
+
+@media (max-width: 768px) {
+    .research-hero-section,
+    .research-insights-section,
+    .voice-archive-section,
+    .research-dataset-section {
+        padding: 32px 20px 24px;
+        min-height: auto;
+    }
+
+    .research-hero-section {
+        padding-top: 80px;
+    }
+
+    .research-hero-title {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    .research-hero-subtitle {
+        font-size: 16px;
+    }
+
+    .research-hero-header {
+        margin-bottom: 20px;
+    }
+
+    .research-hero-main {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        margin-bottom: 32px;
+    }
+
+    .research-hero-text p {
+        font-size: 14px;
+        line-height: 1.8;
+        margin-bottom: 12px;
+    }
+
+    .research-hero-meta {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        padding-top: 20px;
+        margin-top: 20px;
+    }
+
+    .research-hero-meta .meta-value {
+        font-size: 13px;
+    }
+
+    .research-case-card {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .case-card-image {
+        border-radius: 16px;
+    }
+
+    .dataset-bar {
+        flex-wrap: wrap;
+        gap: 16px;
+        padding: 12px 0;
+    }
+
+    .dataset-num {
+        font-size: 28px;
+    }
+
+    .dataset-label {
+        font-size: 11px;
+    }
+
+    .dataset-divider {
+        display: none;
+    }
+
+    .dataset-note {
+        margin-top: 8px;
+        font-size: 11px;
+    }
+
+    .voice-archive-section {
+        padding: 40px 20px 32px;
+        min-height: auto;
+    }
+
+    .voice-archive-header {
+        margin-bottom: 20px;
+    }
+
+    .voice-archive-zh {
+        font-size: 13px;
+    }
+
+    .voice-spheres-row {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .voice-sphere-block {
+        max-width: 100%;
+    }
+
+    .sphere-platform-label {
+        font-size: 18px;
+    }
+
+    .sphere-stage {
+        max-width: 280px;
+        margin: 0 auto;
+    }
+
+    .sphere-features {
+        gap: 6px 12px;
+    }
+
+    .sphere-feature {
+        font-size: 10px;
+        padding: 4px 10px;
+    }
+
+    .sphere-emotions {
+        gap: 8px;
+    }
+
+    .emotion-tag {
+        padding: 6px 10px;
+    }
+
+    .emotion-zh {
+        font-size: 12px;
+    }
+
+    .sphere-desc {
+        font-size: 11px;
+    }
+
+    .voice-detail-panel {
+        padding: 20px 24px;
+        border-radius: 16px;
+    }
+
+    .detail-comment {
+        font-size: 14px;
+    }
+
+    .detail-value {
+        font-size: 13px;
+        line-height: 1.8;
+    }
+
+    .research-insights-section {
+        padding: 64px 20px;
+    }
+
+    .research-insights-header {
+        margin-bottom: 24px;
+    }
+
+    .research-section-title {
+        font-size: 28px;
+    }
+
+    .research-section-label {
+        margin-bottom: 8px;
+    }
+
+    .research-insights-subtitle {
+        font-size: 13px;
+        margin-top: 8px;
+    }
+
+    .platform-comparison {
+        margin-bottom: 32px;
+    }
+
+    .platform-comparison .comparison-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .platform-comparison .comparison-divider {
+        width: 60px;
+        height: 1px;
+        margin: 12px auto;
+        min-height: auto;
+    }
+
+    .platform-comparison .comparison-column {
+        padding: 0;
+    }
+
+    .platform-comparison .comparison-platform {
+        font-size: 18px;
+        margin-bottom: 16px;
+        padding-bottom: 8px;
+    }
+
+    .platform-comparison .comparison-item {
+        margin-bottom: 12px;
+    }
+
+    .platform-comparison .comparison-text {
+        font-size: 13px;
+        line-height: 1.8;
+    }
+
+    .platform-comparison .comparison-summary {
+        margin-top: 12px;
+        padding-top: 12px;
+        font-size: 13px;
+    }
+
+    .platform-conclusion p {
+        font-size: 15px;
+    }
+
+    .work-value {
+        padding-top: 32px;
+    }
+
+    .work-value-title {
+        font-size: 20px;
+    }
+
+    .work-value-subtitle {
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+
+    .work-value-list {
+        max-width: 100%;
+    }
+
+    .work-value-item {
+        grid-template-columns: 36px 1fr;
+        gap: 12px;
+        padding: 16px 0;
+    }
+
+    .work-value-num {
+        font-size: 24px;
+    }
+
+    .work-value-content h4 {
+        font-size: 16px;
+        margin-bottom: 4px;
+    }
+
+    .work-value-content p {
+        font-size: 13px;
+        line-height: 1.8;
+    }
+
+    .work-value-closing {
+        margin-top: 24px;
+        padding-top: 20px;
+    }
+
+    .work-value-closing p {
+        font-size: 13px;
+        line-height: 1.8;
+    }
+
+    .footer-section {
+        padding: 32px 20px 80px;
+    }
+
+    .research-minimal-nav {
+        padding: 0 16px;
+        height: 60px;
+    }
+
+    .research-nav-logo .nav-logo-script {
+        font-size: 18px;
+    }
+
+    .research-nav-back {
+        font-size: 12px;
+    }
+
+    .voice-detail-modal-card {
+        padding: 28px 24px;
+        max-width: 90%;
+    }
+
+    .modal-comment {
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    .modal-value {
+        font-size: 14px;
+        line-height: 1.8;
+    }
+}

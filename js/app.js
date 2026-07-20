@@ -15,7 +15,20 @@ export class App {
 
     init() {
         this.renderComponents();
+        this.handleAnchorScroll();
         this.initScrollEffects();
+    }
+
+    handleAnchorScroll() {
+        const hash = window.location.hash;
+        if (hash) {
+            setTimeout(() => {
+                const target = document.querySelector(hash);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 100);
+        }
     }
 
     renderComponents() {
@@ -61,9 +74,60 @@ export class App {
             });
         }
 
-        const navItems = document.querySelectorAll('.sidebar-nav-item');
+        const navItems = document.querySelectorAll('.sidebar-nav-item, .mobile-nav-item');
         const cardItems = document.querySelectorAll('.work-card-item');
-        const subItems = document.querySelectorAll('.sidebar-nav-subitem');
+        const subItems = document.querySelectorAll('.sidebar-nav-subitem, .mobile-nav-subitem');
+
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const targetId = item.getAttribute('data-section');
+                if (!targetId) return;
+                
+                if (targetId === 'home') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    const section = document.getElementById(targetId);
+                    if (section) {
+                        section.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+                
+                const drawer = document.getElementById('mobile-drawer');
+                if (drawer) {
+                    drawer.classList.remove('open');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+        subItems.forEach(subItem => {
+            subItem.addEventListener('click', () => {
+                const projectId = subItem.getAttribute('data-project');
+                if (!projectId) return;
+                
+                const card = document.querySelector(`.work-card-item[data-project-id="${projectId}"]`);
+                if (card) {
+                    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+                
+                const drawer = document.getElementById('mobile-drawer');
+                if (drawer) {
+                    drawer.classList.remove('open');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+        cardItems.forEach(card => {
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', (e) => {
+                if (e.target.closest('a')) return;
+                const link = card.querySelector('.work-card-view-link');
+                if (link) {
+                    window.location.href = link.href;
+                }
+            });
+        });
 
         window.addEventListener('scroll', () => {
             const scrollY = window.scrollY;
