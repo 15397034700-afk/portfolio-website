@@ -697,3 +697,140 @@
         font-size: 36px;
     }
 }
+
+@media (max-width: 768px) {
+    .pinpin-minimal-nav {
+        padding: 0 20px;
+        height: 56px;
+    }
+    
+    .nav-logo-script {
+        font-size: 18px;
+    }
+    
+    .pinpin-nav-back {
+        font-size: 12px;
+    }
+    
+    .pinpin-hero-section,
+    .pinpin-thinking-section,
+    .pinpin-preview-section {
+        padding: 80px 20px 40px;
+        min-height: auto;
+    }
+    
+    .pinpin-hero-content {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    
+    .pinpin-hero-left {
+        order: 2;
+        gap: 16px;
+    }
+    
+    .pinpin-hero-right {
+        order: 1;
+    }
+    
+    .pinpin-hero-title {
+        font-size: 48px;
+    }
+    
+    .pinpin-hero-subtitle {
+        font-size: 14px;
+    }
+    
+    .pinpin-hero-slogan p {
+        font-size: 22px;
+    }
+    
+    .pinpin-hero-desc p {
+        font-size: 14px;
+        line-height: 1.8;
+    }
+    
+    .pinpin-hero-meta {
+        gap: 16px;
+    }
+    
+    .meta-label {
+        font-size: 10px;
+    }
+    
+    .meta-value {
+        font-size: 14px;
+    }
+    
+    .pinpin-video-wrapper {
+        max-width: 320px;
+        margin: 0 auto;
+    }
+    
+    .thinking-flow {
+        flex-direction: column;
+        gap: 6px;
+    }
+    
+    .flow-arrow {
+        transform: rotate(90deg);
+        padding-top: 0;
+    }
+    
+    .thinking-modules,
+    .preview-features {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .thinking-module::after,
+    .feature-item::after {
+        display: none;
+    }
+    
+    .preview-gallery {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .pinpin-section-title {
+        font-size: 28px;
+    }
+    
+    .pinpin-section-subtitle {
+        font-size: 14px;
+    }
+    
+    .thinking-step-label {
+        font-size: 10px;
+    }
+    
+    .thinking-step-title {
+        font-size: 20px;
+    }
+    
+    .thinking-module-title {
+        font-size: 16px;
+    }
+    
+    .thinking-module-desc {
+        font-size: 13px;
+    }
+    
+    .feature-title {
+        font-size: 15px;
+    }
+    
+    .feature-desc {
+        font-size: 13px;
+    }
+    
+    .reflection-text p {
+        font-size: 14px;
+        line-height: 1.8;
+    }
+    
+    .reflection-slogan p {
+        font-size: 24px;
+    }
+}
