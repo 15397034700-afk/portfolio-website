@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lace Frame Preview</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            background: #FFF5F7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            font-family: 'Noto Serif SC', serif;
+        }
+        h1 {
+            color: #9A8B7C;
+            font-weight: 300;
+            font-style: italic;
+            font-size: 24px;
+        }
+        .frame-preview {
+            position: relative;
+            width: 600px;
+            height: 450px;
+        }
+        .frame-preview svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .frame-content {
+            position: absolute;
+            top: 160px;
+            left: 100px;
+            right: 100px;
+            bottom: 160px;
+            background: #F5F0EB;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #B5A89B;
+            font-size: 14px;
+        }
+        .frame-small {
+            width: 400px;
+            height: 300px;
+        }
+        .frame-small .frame-content {
+            top: 110px;
+            left: 70px;
+            right: 70px;
+            bottom: 110px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lace Frame Component 预览</h1>
+    
+    <div class="frame-preview" id="frame1"></div>
+    
+    <div class="frame-preview frame-small" id="frame2"></div>
+
+    <script type="module">
+        import { LaceFrame } from './js/components/LaceFrame.js';
+        
+        const frame1 = new LaceFrame({
+            width: 600,
+            height: 450
+        });
+        document.getElementById('frame1').innerHTML = `
+            ${frame1.render()}
+            <div class="frame-content">作品图片区域</div>
+        `;
+        
+        const frame2 = new LaceFrame({
+            width: 400,
+            height: 300,
+            outerBandHeight: 40,
+            laceWidth: 55,
+            innerLaceWidth: 16
+        });
+        document.getElementById('frame2').innerHTML = `
+            ${frame2.render()}
+            <div class="frame-content">小尺寸版本</div>
+        `;
+    </script>
+</body>
+</html>

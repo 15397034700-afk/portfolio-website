@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Frame Preview</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 60px 40px;
+            background: #FFF5F7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 60px;
+            font-family: 'Noto Serif SC', serif;
+        }
+        h1 {
+            color: #9A8B7C;
+            font-weight: 300;
+            font-style: italic;
+            font-size: 28px;
+            margin: 0;
+        }
+        .frame-wrapper {
+            position: relative;
+            width: 700px;
+            height: 520px;
+        }
+        .frame-wrapper svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .frame-image {
+            position: absolute;
+            z-index: 0;
+            background: #F0E8E0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #B5A89B;
+            font-size: 16px;
+            overflow: hidden;
+        }
+        .frame-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .frame-small {
+            width: 480px;
+            height: 360px;
+        }
+        .label {
+            color: #B5A89B;
+            font-size: 13px;
+            margin-top: -30px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <h1>Project Frame Component 预览</h1>
+
+    <div>
+        <div class="frame-wrapper" id="frame1"></div>
+        <p class="label">大尺寸版本（模拟作品卡片）</p>
+    </div>
+
+    <div>
+        <div class="frame-wrapper frame-small" id="frame2"></div>
+        <p class="label">小尺寸版本</p>
+    </div>
+
+    <script type="module">
+        import { ProjectFrame } from './js/components/ProjectFrame.js';
+
+        const frame1 = new ProjectFrame({
+            width: 700,
+            height: 520
+        });
+
+        const imgArea1 = frame1.imageArea;
+        document.getElementById('frame1').innerHTML = `
+            <div class="frame-image" style="
+                left: ${imgArea1.x}px;
+                top: ${imgArea1.y}px;
+                width: ${imgArea1.width}px;
+                height: ${imgArea1.height}px;
+            ">
+                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=portrait%20of%20beautiful%20young%20asian%20woman%20with%20long%20black%20hair%20holding%20a%20skincare%20product%20in%20a%20cozy%20minimal%20room%20soft%20natural%20light%20korean%20aesthetic&image_size=landscape_4_3" alt="preview">
+            </div>
+            ${frame1.render()}
+        `;
+
+        const frame2 = new ProjectFrame({
+            width: 480,
+            height: 360,
+            greenBandHeight: 38,
+            laceWidth: 52,
+            innerLaceWidth: 14,
+            imagePadX: 24,
+            imagePadY: 18
+        });
+
+        const imgArea2 = frame2.imageArea;
+        document.getElementById('frame2').innerHTML = `
+            <div class="frame-image" style="
+                left: ${imgArea2.x}px;
+                top: ${imgArea2.y}px;
+                width: ${imgArea2.width}px;
+                height: ${imgArea2.height}px;
+            ">
+                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=botanical%20illustration%20of%20cherry%20blossom%20branch%20with%20pink%20flowers%20vintage%20style%20watercolor%20soft%20delicate&image_size=landscape_4_3" alt="preview">
+            </div>
+            ${frame2.render()}
+        `;
+    </script>
+</body>
+</html>

@@ -1,0 +1,750 @@
+/* =============================================
+   Design Collection — Visual Archive
+   Horizontal Album Browser (Apple Gallery style)
+   ============================================= */
+
+/* ---------- Base ---------- */
+.dc-page {
+    margin: 0;
+    padding: 0;
+    background-color: #FFFFFF;
+    color: #2C2C2C;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    cursor: default;
+}
+
+.dc-page * { box-sizing: border-box; }
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* ---------- Back Link ---------- */
+.dc-back {
+    position: fixed;
+    top: 48px;
+    left: 48px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #2C2C2C;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    z-index: 200;
+    transition: opacity 0.3s ease;
+}
+.dc-back:hover { opacity: 0.5; }
+
+@media (max-width: 640px) {
+    .dc-back { left: 24px; top: 24px; font-size: 12px; }
+}
+
+/* =============================================
+   SECTION 01 — Hero (100vh)
+   ============================================= */
+.dc-hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 40px;
+    text-align: center;
+    position: relative;
+}
+
+.dc-hero-inner {
+    max-width: 800px;
+}
+
+.dc-hero-year {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #8A837C;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin: 0 0 32px 0;
+}
+
+.dc-hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    font-weight: 400;
+    color: #2C2C2C;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin: 0 0 20px 0;
+    line-height: 1.1;
+}
+
+.dc-hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 300;
+    color: #6B6560;
+    margin: 0 0 48px 0;
+    letter-spacing: 0.02em;
+}
+
+.dc-hero-desc p {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 15px;
+    color: #5A524C;
+    font-weight: 300;
+    line-height: 2;
+    margin: 0;
+    letter-spacing: 0.03em;
+}
+
+.dc-hero-scroll-hint {
+    position: absolute;
+    bottom: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.dc-hero-scroll-hint span {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    color: #A8A098;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+/* =============================================
+   SECTION 02 — Project List
+   ============================================= */
+.dc-list {
+    min-height: 100vh;
+    padding: 120px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dc-list-inner {
+    width: 100%;
+    max-width: 900px;
+}
+
+.dc-list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 56px 0;
+    border-bottom: 1px solid #E5E1DA;
+}
+
+.dc-list-item:last-child {
+    border-bottom: none;
+}
+
+.list-item-left {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.list-item-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: #A8A098;
+    margin-bottom: 6px;
+}
+
+.list-item-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: #2C2C2C;
+    margin: 0;
+    letter-spacing: 0.02em;
+}
+
+.list-item-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: #6B6560;
+    margin: 4px 0;
+}
+
+.list-item-year {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: #A8A098;
+    letter-spacing: 0.18em;
+    margin: 8px 0 12px 0;
+}
+
+.list-item-desc {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    color: #5A524C;
+    font-weight: 300;
+    line-height: 1.8;
+    margin: 0;
+    max-width: 500px;
+    letter-spacing: 0.03em;
+}
+
+.list-item-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.list-item-link {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #2C2C2C;
+    letter-spacing: 0.1em;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.list-item-right:hover .list-item-link {
+    transform: translateX(8px);
+}
+
+.list-item-line {
+    width: 0;
+    height: 1px;
+    background: #2C2C2C;
+    transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.list-item-right:hover .list-item-line {
+    width: 60px;
+}
+
+/* =============================================
+   SECTION 03 & 05 — Horizontal Album
+   ============================================= */
+.dc-album {
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    background: #FFFFFF;
+}
+
+.album-track {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.album-page {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+                transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    transform: scale(0.98);
+    pointer-events: none;
+    cursor: pointer;
+}
+
+.album-page.is-current {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+/* Click zones */
+.page-click-zone {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    z-index: 10;
+    pointer-events: auto;
+}
+
+.page-click-zone.click-left {
+    left: 0;
+    cursor: w-resize;
+}
+
+.page-click-zone.click-right {
+    right: 0;
+    cursor: e-resize;
+}
+
+.page-click-zone.click-left:hover ~ .page-frame {
+    filter: none;
+}
+
+.page-click-zone.click-right:hover ~ .page-frame {
+    filter: none;
+}
+
+.album-page.is-exit-left {
+    opacity: 0;
+    transform: scale(0.98) translateX(-30px);
+    visibility: visible;
+    pointer-events: none;
+}
+
+.album-page.is-exit-right {
+    opacity: 0;
+    transform: scale(0.98) translateX(30px);
+    visibility: visible;
+    pointer-events: none;
+}
+
+/* ---- Page Frame (the "physical paper") ---- */
+.page-frame {
+    width: 100%;
+    max-width: 1100px;
+    aspect-ratio: 16 / 10;
+    position: relative;
+}
+
+.page-paper {
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF;
+    position: relative;
+    overflow: hidden;
+    /* The "page sitting on a desk" feel — soft paper edge + hairline border */
+    box-shadow:
+        0 1px 0 rgba(0, 0, 0, 0.04),
+        0 2px 4px rgba(0, 0, 0, 0.03),
+        0 12px 28px rgba(0, 0, 0, 0.06),
+        0 28px 60px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.page-paper::before {
+    /* Very subtle paper texture */
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.015'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ---- Page Caption (top-left) ---- */
+.page-caption {
+    position: absolute;
+    top: 28px;
+    left: 32px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #6E6E6E;
+    letter-spacing: 0.02em;
+    z-index: 2;
+}
+
+/* ---- Page Image Area ---- */
+.page-image-area {
+    width: 90%;
+    height: 90%;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.page-image-area.full-image {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform: none;
+}
+
+.page-image-real {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    opacity: 0;
+    animation: fadeInImage 0.8s ease forwards;
+}
+
+@keyframes fadeInImage {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Transition page inside album */
+.page-transition .page-paper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.transition-content {
+    text-align: center;
+    z-index: 2;
+}
+
+.transition-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    color: #A8A098;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin: 0 0 16px 0;
+}
+
+.transition-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 400;
+    color: #2C2C2C;
+    letter-spacing: 0.04em;
+    margin: 0 0 8px 0;
+}
+
+.transition-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 300;
+    color: #6B6560;
+    margin: 0;
+    letter-spacing: 0.02em;
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F0EDE7;
+    color: #A8A098;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+}
+
+.image-placeholder span {
+    position: relative;
+    z-index: 1;
+}
+
+.image-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100' height='100' fill='none' stroke='%23D8D0C4' stroke-width='0.5' stroke-dasharray='4 4'/%3E%3C/svg%3E");
+    background-size: 20px 20px;
+    opacity: 0.4;
+}
+
+/* ---- Cover Page (Page 01) ---- */
+.page-cover-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cover-content {
+    text-align: center;
+    z-index: 2;
+    position: relative;
+}
+
+.cover-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    font-weight: 400;
+    color: #2C2C2C;
+    letter-spacing: 0.04em;
+    margin: 0 0 16px 0;
+    line-height: 1;
+}
+
+.cover-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 300;
+    color: #6B6560;
+    margin: 0 0 12px 0;
+    letter-spacing: 0.02em;
+}
+
+.cover-year {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: #A8A098;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+/* ---- Final Page Caption (right bottom) ---- */
+.page-final-caption {
+    position: absolute;
+    bottom: 32px;
+    right: 36px;
+    text-align: right;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+}
+
+.final-caption-line {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: #6E6E6E;
+    letter-spacing: 0.05em;
+}
+
+.final-caption-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    font-style: italic;
+    color: #A8A098;
+    letter-spacing: 0.02em;
+}
+
+/* =============================================
+   SECTION 04 — Next Project Transition
+   ============================================= */
+.dc-next {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 40px;
+    text-align: center;
+}
+
+.dc-next-inner {
+    max-width: 600px;
+}
+
+.dc-next-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    color: #A8A098;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin: 0 0 16px 0;
+}
+
+.dc-next-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 400;
+    color: #2C2C2C;
+    letter-spacing: 0.04em;
+    margin: 0 0 8px 0;
+}
+
+.dc-next-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 300;
+    color: #6B6560;
+    margin: 0 0 48px 0;
+    letter-spacing: 0.02em;
+}
+
+.dc-next-hint span {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: #A8A098;
+    letter-spacing: 0.18em;
+}
+
+/* =============================================
+   SECTION 06 — End of Archive
+   ============================================= */
+.dc-end {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 40px;
+    text-align: center;
+}
+
+.dc-end-inner {
+    max-width: 600px;
+}
+
+.dc-end-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 400;
+    color: #2C2C2C;
+    letter-spacing: 0.04em;
+    margin: 0 0 56px 0;
+}
+
+.dc-end-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+}
+
+.dc-end-link {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #2C2C2C;
+    text-decoration: none;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: opacity 0.3s ease;
+}
+
+.dc-end-link:hover {
+    opacity: 0.5;
+}
+
+/* =============================================
+   Progress Bar
+   ============================================= */
+.dc-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.05);
+    z-index: 150;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.dc-progress .progress-bar {
+    height: 100%;
+    background: #2C2C2C;
+    width: 0;
+    transition: width 0.4s ease;
+}
+
+/* =============================================
+   Responsive
+   ============================================= */
+@media (max-width: 1100px) {
+    .page-frame {
+        max-width: 92vw;
+    }
+}
+
+@media (max-width: 900px) {
+    .dc-hero-title { font-size: 44px; letter-spacing: 0.1em; }
+    .dc-hero-subtitle { font-size: 18px; }
+    .dc-hero-desc p { font-size: 14px; }
+
+    .dc-list-item {
+        padding: 40px 0;
+    }
+
+    .list-item-title { font-size: 24px; }
+    .list-item-desc { font-size: 13px; }
+
+    .album-page { padding: 40px 24px; }
+
+    .cover-title { font-size: 48px; }
+    .cover-subtitle { font-size: 16px; }
+
+    .page-caption { font-size: 14px; top: 20px; left: 24px; }
+
+    .dc-next-title { font-size: 36px; }
+    .dc-end-title { font-size: 28px; }
+
+    .dc-end-actions {
+        flex-direction: column;
+        gap: 24px;
+    }
+}
+
+@media (max-width: 640px) {
+    .dc-hero {
+        padding: 60px 24px;
+    }
+
+    .dc-hero-title { font-size: 32px; letter-spacing: 0.08em; }
+    .dc-hero-subtitle { font-size: 16px; }
+    .dc-hero-desc p { font-size: 13px; }
+
+    .dc-list {
+        padding: 60px 24px;
+    }
+
+    .dc-list-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .list-item-right {
+        align-items: flex-start;
+    }
+
+    .cover-title { font-size: 36px; }
+    .cover-subtitle { font-size: 14px; }
+
+    .page-caption { font-size: 12px; top: 16px; left: 16px; }
+    .page-final-caption { bottom: 20px; right: 20px; }
+
+    .dc-next-title { font-size: 28px; }
+    .dc-end-title { font-size: 24px; }
+}
+
+/* =============================================
+   Custom Scrollbar (subtle)
+   ============================================= */
+.dc-page::-webkit-scrollbar {
+    width: 6px;
+}
+
+.dc-page::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.dc-page::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+}

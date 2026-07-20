@@ -1,0 +1,21 @@
+.DS_Store
+Thumbs.db
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.env
+node_modules/
+dist/
+build/
+.sass-cache/
+*.map
+*.log
+*.tmp
+*~
+
+# Large media files
+assets/*.mp4
+assets/*.mov
+assets/*.avi
+assets/*.mkv

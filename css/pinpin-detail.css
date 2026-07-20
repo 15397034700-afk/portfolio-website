@@ -1,0 +1,699 @@
+/* ============ Detail Page Global ============ */
+.detail-page .section {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.detail-page main {
+    margin-left: 0;
+    width: 100%;
+}
+
+/* ============ Minimal Nav ============ */
+.pinpin-minimal-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 72px;
+    padding: 0 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: var(--z-index-nav);
+    background: rgba(255, 253, 252, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--color-pink-faint);
+}
+
+.pinpin-nav-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-family-serif);
+    font-size: 13px;
+    color: var(--color-text-light-coffee);
+    letter-spacing: 0.1em;
+    transition: color 0.3s ease;
+    cursor: pointer;
+    font-style: italic;
+}
+
+.pinpin-nav-back:hover {
+    color: var(--color-text-ink-green);
+}
+
+.nav-back-arrow {
+    font-size: 14px;
+    transition: transform 0.3s ease;
+}
+
+.pinpin-nav-back:hover .nav-back-arrow {
+    transform: translateX(-3px);
+}
+
+.pinpin-nav-logo {
+    text-decoration: none;
+}
+
+.nav-logo-script {
+    font-family: var(--font-family-script);
+    font-size: 22px;
+    color: var(--color-text-ink-green);
+    letter-spacing: 0.02em;
+}
+
+/* ============ Section 01 Hero ============ */
+.pinpin-hero-section {
+    min-height: calc(100vh - 72px);
+    padding: 120px 80px 60px;
+    display: flex;
+    align-items: center;
+}
+
+.pinpin-hero-container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.pinpin-hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 80px;
+    align-items: start;
+}
+
+.pinpin-hero-left {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-top: 8px;
+}
+
+.pinpin-hero-label {
+    font-family: var(--font-family-serif);
+    font-size: 11px;
+    color: var(--color-sage-light);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin-bottom: -8px;
+}
+
+.pinpin-hero-title {
+    font-family: var(--font-family-serif);
+    font-size: 88px;
+    font-weight: var(--font-weight-light);
+    color: var(--color-text-ink-green);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    font-style: italic;
+    margin: 0;
+}
+
+.pinpin-hero-subtitle {
+    font-family: var(--font-family-serif);
+    font-size: 18px;
+    color: var(--color-text-bean-pink);
+    font-weight: var(--font-weight-light);
+    letter-spacing: 0.05em;
+    margin-top: -12px;
+}
+
+.pinpin-hero-slogan {
+    margin-top: 4px;
+}
+
+.pinpin-hero-slogan p {
+    font-family: var(--font-family-serif);
+    font-size: 26px;
+    color: var(--color-text-ink-green);
+    line-height: 1.3;
+    font-weight: var(--font-weight-light);
+    font-style: italic;
+}
+
+.pinpin-hero-desc {
+    margin-top: 8px;
+}
+
+.pinpin-hero-desc p {
+    font-size: 14px;
+    color: var(--color-text-soft);
+    line-height: 1.9;
+}
+
+.pinpin-hero-meta {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-pink-faint);
+}
+
+.meta-item {
+    display: flex;
+    gap: 32px;
+    align-items: baseline;
+}
+
+.meta-label {
+    font-family: var(--font-family-serif);
+    font-size: 10px;
+    color: var(--color-text-muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    width: 72px;
+    flex-shrink: 0;
+}
+
+.meta-value {
+    font-size: 14px;
+    color: var(--color-text-ink-green);
+    font-weight: var(--font-weight-normal);
+}
+
+.pinpin-hero-right {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.pinpin-video-wrapper {
+    width: 100%;
+    aspect-ratio: 4 / 5; /* 默认占位比例，视频加载后会自动替换为真实比例 */
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--color-sage-faint);
+    cursor: pointer;
+}
+
+.pinpin-promo-video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    background: var(--color-sage-faint);
+}
+
+.pinpin-video-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: rgba(248, 246, 241, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: opacity 0.4s ease;
+    z-index: 2;
+}
+
+.pinpin-video-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.video-play-button {
+    transition: transform 0.3s ease;
+}
+
+.pinpin-video-wrapper:hover .video-play-button {
+    transform: scale(1.08);
+}
+
+.video-play-text {
+    font-family: var(--font-family-serif);
+    font-size: 12px;
+    color: var(--color-text-light-coffee);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-style: italic;
+}
+
+.video-mute-button {
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 253, 252, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 3;
+    transition: background 0.3s ease, transform 0.2s ease;
+    opacity: 0;
+}
+
+.pinpin-video-wrapper:hover .video-mute-button {
+    opacity: 1;
+}
+
+.video-mute-button:hover {
+    background: rgba(255, 253, 252, 0.9);
+    transform: scale(1.05);
+}
+
+.video-mute-button svg {
+    pointer-events: none;
+}
+
+/* ============ Section 02 Design Thinking ============ */
+.pinpin-thinking-section {
+    padding: 60px 80px 40px;
+}
+
+.pinpin-thinking-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pinpin-section-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.pinpin-section-label {
+    font-family: var(--font-family-serif);
+    font-size: 11px;
+    color: var(--color-sage-light);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.pinpin-section-title {
+    font-family: var(--font-family-serif);
+    font-size: 48px;
+    font-weight: var(--font-weight-light);
+    color: var(--color-text-ink-green);
+    font-style: italic;
+    letter-spacing: -0.01em;
+    margin: 0;
+}
+
+/* ============ Thinking Diagram ============ */
+.thinking-diagram {
+    margin-bottom: 32px;
+    width: 100%;
+}
+
+.thinking-flow {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: nowrap;
+}
+
+.flow-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    max-width: 200px;
+}
+
+.node-circle {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    border: 1px solid var(--color-sage-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg-cream);
+    transition: all 0.4s ease;
+    flex-shrink: 0;
+}
+
+.node-circle:hover {
+    background: var(--color-sage-faint);
+    border-color: var(--color-sage-soft);
+}
+
+.node-accent {
+    background: var(--color-sage-faint);
+    border-color: var(--color-sage-light);
+}
+
+.node-label {
+    font-family: var(--font-family-serif);
+    font-size: 14px;
+    color: var(--color-text-ink-green);
+    letter-spacing: 0.05em;
+    font-weight: var(--font-weight-normal);
+}
+
+.node-desc {
+    font-size: 12px;
+    color: var(--color-text-soft);
+    line-height: 1.7;
+    text-align: center;
+}
+
+.flow-arrow {
+    display: flex;
+    align-items: flex-start;
+    padding-top: 36px;
+    flex-shrink: 0;
+}
+
+/* ============ Thinking Modules ============ */
+.thinking-modules {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    margin-bottom: 48px;
+    width: 100%;
+}
+
+.thinking-module {
+    text-align: left;
+    padding: 0 8px;
+    position: relative;
+}
+
+.thinking-module:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -24px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: var(--color-pink-faint);
+}
+
+.module-tag {
+    font-family: var(--font-family-serif);
+    font-size: 10px;
+    color: var(--color-pink-dusty);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    font-style: italic;
+}
+
+.module-title {
+    font-family: var(--font-family-serif);
+    font-size: 18px;
+    color: var(--color-text-ink-green);
+    font-weight: var(--font-weight-normal);
+    margin-bottom: 12px;
+}
+
+.module-desc {
+    font-size: 13px;
+    color: var(--color-text-soft);
+    line-height: 1.8;
+}
+
+.solution-tags {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+}
+
+.solution-tag {
+    padding: 5px 14px;
+    background: var(--color-sage-faint);
+    border-radius: 16px;
+    font-family: var(--font-family-serif);
+    font-size: 11px;
+    color: var(--color-text-ink-green);
+    letter-spacing: 0.05em;
+}
+
+/* ============ Thinking Quote ============ */
+.thinking-quote {
+    text-align: center;
+    padding: 36px 0 8px;
+    border-top: 1px solid var(--color-pink-faint);
+    width: 100%;
+    margin-top: 8px;
+}
+
+.quote-text {
+    font-family: var(--font-family-serif);
+    font-size: 20px;
+    color: var(--color-text-ink-green);
+    line-height: 1.6;
+    font-weight: var(--font-weight-light);
+    font-style: italic;
+}
+
+.quote-accent {
+    color: var(--color-text-bean-pink);
+}
+
+/* ============ Section 03 Product Preview ============ */
+.pinpin-preview-section {
+    padding: 40px 80px 60px;
+}
+
+.pinpin-preview-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ============ Preview Gallery ============ */
+.preview-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 48px;
+    width: 100%;
+}
+
+.preview-item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.preview-image-wrapper {
+    width: 100%;
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.preview-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.preview-card {
+    aspect-ratio: 9 / 16;
+}
+
+.preview-image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: var(--color-pink-faint);
+    display: flex;
+    align-items: flex-end;
+    padding: 24px;
+    position: relative;
+}
+
+.preview-sub-wrapper .preview-image-placeholder {
+    padding: 20px;
+}
+
+.preview-image-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(255, 253, 252, 0.3) 100%);
+}
+
+.placeholder-label {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.placeholder-tag {
+    font-family: var(--font-family-serif);
+    font-size: 10px;
+    color: var(--color-text-bean-pink);
+    letter-spacing: 0.15em;
+    opacity: 0.8;
+}
+
+.placeholder-name {
+    font-family: var(--font-family-serif);
+    font-size: 18px;
+    color: var(--color-text-ink-green);
+    font-weight: var(--font-weight-normal);
+}
+
+.preview-sub-wrapper .placeholder-name {
+    font-size: 16px;
+}
+
+/* ============ Preview Features ============ */
+.preview-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    margin-bottom: 48px;
+    width: 100%;
+}
+
+.feature-item {
+    text-align: left;
+    padding: 0 8px;
+    position: relative;
+}
+
+.feature-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -24px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: var(--color-pink-faint);
+}
+
+.feature-tag {
+    font-family: var(--font-family-serif);
+    font-size: 11px;
+    color: var(--color-pink-dusty);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+.feature-desc {
+    font-size: 13px;
+    color: var(--color-text-soft);
+    line-height: 1.8;
+}
+
+/* ============ Reflection ============ */
+.preview-reflection {
+    max-width: 680px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.reflection-label {
+    font-family: var(--font-family-serif);
+    font-size: 11px;
+    color: var(--color-sage-light);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.reflection-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.reflection-content p {
+    font-size: 14px;
+    color: var(--color-text-soft);
+    line-height: 1.9;
+}
+
+/* ============ Ending ============ */
+.preview-ending {
+    text-align: center;
+    padding: 32px 0 8px;
+}
+
+.ending-text {
+    font-family: var(--font-family-serif);
+    font-size: 28px;
+    color: var(--color-text-ink-green);
+    line-height: 1.4;
+    font-weight: var(--font-weight-light);
+    font-style: italic;
+}
+
+.ending-accent {
+    color: var(--color-text-bean-pink);
+}
+
+/* ============ Responsive ============ */
+@media (max-width: 1024px) {
+    .pinpin-minimal-nav {
+        padding: 0 32px;
+    }
+    
+    .pinpin-hero-section,
+    .pinpin-thinking-section,
+    .pinpin-preview-section {
+        padding: 80px 32px 48px;
+    }
+    
+    .pinpin-hero-content {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+    
+    .pinpin-hero-title {
+        font-size: 64px;
+    }
+    
+    .thinking-flow {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .flow-arrow {
+        transform: rotate(90deg);
+        padding-top: 0;
+    }
+    
+    .thinking-modules,
+    .preview-features {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    
+    .thinking-module::after,
+    .feature-item::after {
+        display: none;
+    }
+    
+    .preview-gallery {
+        grid-template-columns: 1fr;
+    }
+    
+    .pinpin-section-title {
+        font-size: 36px;
+    }
+}

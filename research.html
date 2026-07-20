@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Project - Chen Ming Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/research-detail.css">
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
+</head>
+<body class="detail-page">
+    <div id="navigation"></div>
+    <div id="decorations"></div>
+
+    <main>
+        <div id="research-hero"></div>
+        <div id="research-dataset" class="section"></div>
+        <div id="voice-archive" class="section voice-archive-section"></div>
+        <div id="research-insights"></div>
+    </main>
+
+    <div id="footer"></div>
+
+    <script type="module">
+        import { ResearchDetailApp } from './js/app-research.js';
+        window.app = new ResearchDetailApp();
+        window.app.init();
+    </script>
+</body>
+</html>
