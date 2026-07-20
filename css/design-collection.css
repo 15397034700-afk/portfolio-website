@@ -205,7 +205,7 @@ body {
 
 .list-item-link {
     font-family: 'Inter', sans-serif;
-    font-size: 13px;
+    font-size: 28px;
     color: #2C2C2C;
     letter-spacing: 0.1em;
     transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);

@@ -961,9 +961,9 @@ main {
 .work-card-view {
     display: inline-flex;
     align-items: center;
-    gap: 12px;
+    gap: 24px;
     font-family: var(--font-family-serif);
-    font-size: 14px;
+    font-size: 28px;
     color: var(--color-text-bean-pink);
     letter-spacing: 0.15em;
     cursor: pointer;
@@ -977,7 +977,7 @@ main {
 }
 
 .work-card-view-arrow {
-    font-size: 14px;
+    font-size: 28px;
 }
 
 .work-card-image-wrapper {
@@ -1311,9 +1311,9 @@ main {
 .work-card-view {
     display: inline-flex;
     align-items: center;
-    gap: 12px;
+    gap: 24px;
     font-family: var(--font-family-serif);
-    font-size: 14px;
+    font-size: 28px;
     color: var(--color-text-bean-pink);
     letter-spacing: 0.15em;
     cursor: pointer;
@@ -1327,7 +1327,7 @@ main {
 }
 
 .work-card-view-arrow {
-    font-size: 14px;
+    font-size: 28px;
     transition: transform 0.3s ease;
 }
 
@@ -1958,18 +1958,42 @@ main {
 }
 
 @media (max-width: 768px) {
-    .sidebar-nav {
+    .sidebar-nav,
+    .sidebar-nav-items,
+    .sidebar-nav-group,
+    .sidebar-nav-item,
+    .sidebar-nav-line,
+    .sidebar-sound-tag,
+    .sidebar-nav-subitems,
+    .sidebar-nav-subitem,
+    .sidebar-nav-number,
+    .sidebar-nav-label {
         display: none !important;
-        position: fixed;
-        left: -9999px;
+        visibility: hidden !important;
+        position: fixed !important;
+        left: -9999px !important;
+        top: -9999px !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
+    
+    #navigation {
+        position: relative;
+        z-index: 100;
     }
     
     main {
         margin-left: 0 !important;
         width: 100% !important;
+        padding-left: 0 !important;
     }
     
-    .page-decoration {
+    .page-decoration,
+    .page-corner-decoration,
+    .page-side-decoration {
         display: none !important;
     }
     
@@ -2523,12 +2547,13 @@ main {
     }
     
     .work-card-view {
-        font-size: 14px;
-        gap: 10px;
+        font-size: 28px;
+        gap: 20px;
     }
     
     .work-card-view-arrow {
         transition: none;
+        font-size: 28px;
     }
     
     .pressed-leaf {
