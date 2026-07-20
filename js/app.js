@@ -67,18 +67,6 @@ export class App {
     }
 
     initScrollEffects() {
-        // Resume download handler
-        const resumeBtn = document.querySelector('[data-action="download-resume"]');
-        if (resumeBtn) {
-            resumeBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const link = document.createElement('a');
-                link.href = 'portfolio-fullpage.pdf';
-                link.download = 'Chen-Ming-Resume.pdf';
-                link.click();
-            });
-        }
-
         const navItems = document.querySelectorAll('.sidebar-nav-item, .mobile-nav-item');
         const cardItems = document.querySelectorAll('.work-card-item');
         const subItems = document.querySelectorAll('.sidebar-nav-subitem, .mobile-nav-subitem');
@@ -219,29 +207,27 @@ export class App {
 
     // Resume 交互：Download 显示 downloading、Send Email 复制邮箱
     initResumeInteractions() {
-        const downloadBtn = document.querySelector('[data-action="download-resume"]');
-        if (downloadBtn) {
-            // 移除之前绑定的 handler，重新绑定
-            const newBtn = downloadBtn.cloneNode(true);
-            downloadBtn.parentNode.replaceChild(newBtn, downloadBtn);
-
-            newBtn.addEventListener('click', (e) => {
+        const downloadBtns = document.querySelectorAll('[data-action="download-resume"]');
+        downloadBtns.forEach((btn) => {
+            btn.addEventListener('click', (e) => {
                 e.preventDefault();
-                if (newBtn.classList.contains('downloading')) return;
-                newBtn.classList.add('downloading');
+                if (btn.classList.contains('downloading')) return;
+                btn.classList.add('downloading');
 
                 setTimeout(() => {
                     const link = document.createElement('a');
-                    link.href = 'portfolio-fullpage.pdf';
+                    link.href = 'resume.pdf';
                     link.download = 'Chen-Ming-Resume.pdf';
+                    document.body.appendChild(link);
                     link.click();
+                    document.body.removeChild(link);
 
                     setTimeout(() => {
-                        newBtn.classList.remove('downloading');
+                        btn.classList.remove('downloading');
                     }, 400);
-                }, 800);
+                }, 500);
             });
-        }
+        });
 
         // Send Email → 复制邮箱
         const emailLink = document.querySelector('[data-link="email"]');
