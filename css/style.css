@@ -1,5 +1,30 @@
 @import './theme.css';
 
+/* Keep the existing navigation appearance when items become native buttons. */
+.sidebar-nav-item,
+.sidebar-nav-subitem,
+.mobile-nav-item,
+.mobile-nav-subitem {
+    appearance: none;
+    background: transparent;
+    border: 0;
+    margin: 0;
+    width: 100%;
+    text-align: left;
+    font-weight: inherit;
+    line-height: inherit;
+}
+
+.sidebar-nav-item:focus-visible,
+.sidebar-nav-subitem:focus-visible,
+.mobile-nav-item:focus-visible,
+.mobile-nav-subitem:focus-visible,
+.mobile-menu-btn:focus-visible,
+.mobile-drawer-close:focus-visible {
+    outline: 2px solid var(--color-pink-dusty);
+    outline-offset: 2px;
+}
+
 .mobile-header,
 .mobile-drawer {
     display: none !important;
@@ -2821,3 +2846,4 @@ main {
         padding: 60px 24px;
     }
 }
+
