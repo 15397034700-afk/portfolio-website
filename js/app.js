@@ -72,7 +72,7 @@ export class App {
         const subItems = document.querySelectorAll('.sidebar-nav-subitem, .mobile-nav-subitem');
 
         navItems.forEach(item => {
-            item.addEventListener('click', () => {
+            item.addEventListener('click', (event) => {
                 const targetId = item.getAttribute('data-section');
                 if (!targetId) return;
                 
@@ -85,16 +85,16 @@ export class App {
                     }
                 }
                 
-                const drawer = document.getElementById('mobile-drawer');
-                if (drawer) {
-                    drawer.classList.remove('open');
-                    document.body.style.overflow = '';
+                if (event.detail === 0 && item.classList.contains('mobile-nav-item')) {
+                    this.focusNavigationTarget(
+                        targetId === 'home' ? document.getElementById('hero') : document.getElementById(targetId)
+                    );
                 }
             });
         });
 
         subItems.forEach(subItem => {
-            subItem.addEventListener('click', () => {
+            subItem.addEventListener('click', (event) => {
                 const projectId = subItem.getAttribute('data-project');
                 if (!projectId) return;
                 
@@ -103,10 +103,8 @@ export class App {
                     card.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
                 
-                const drawer = document.getElementById('mobile-drawer');
-                if (drawer) {
-                    drawer.classList.remove('open');
-                    document.body.style.overflow = '';
+                if (event.detail === 0 && subItem.classList.contains('mobile-nav-subitem')) {
+                    this.focusNavigationTarget(card);
                 }
             });
         });
@@ -178,6 +176,13 @@ export class App {
                 }
             });
         });
+    }
+
+    focusNavigationTarget(target) {
+        if (!target) return;
+        target.setAttribute('tabindex', '-1');
+        target.focus({ preventScroll: true });
+        target.addEventListener('blur', () => target.removeAttribute('tabindex'), { once: true });
     }
 
     // Hero → About → Projects → Resume 依次淡入
